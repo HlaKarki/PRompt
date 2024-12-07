@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "PR Description Generator",
+  "version": "1.0",
+  "description": "Generate PR descriptions automatically",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.github.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [{
+    "resources": ["default_template.md"],
+    "matches": ["*://github.com/*"]
+  }],
+  "icons": {
+    "128": "icon128.png"
+  }
+}
