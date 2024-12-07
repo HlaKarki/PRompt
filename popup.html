@@ -1,0 +1,88 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    .input-group {
+      margin-bottom: 16px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: white;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #0969da;
+      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+    }
+    .model-info {
+      font-size: 12px;
+      color: #57606a;
+      margin-top: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      background-color: #2da44e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    button:hover {
+      background-color: #2c974b;
+    }
+    button:disabled {
+      background-color: #94d3a2;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 8px;
+      text-align: center;
+      color: #1a7f37;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-group">
+    <label for="openai-key">OpenAI API Key (required)</label>
+    <input type="password" id="openai-key" placeholder="sk-...">
+  </div>
+  <div class="input-group">
+    <label for="openai-model">Model</label>
+    <select id="openai-model">
+      <option value="gpt-3.5-turbo">GPT-3.5 (Fastest)</option>
+      <option value="gpt-4-turbo-preview">GPT-4 Turbo (Faster)</option>
+      <option value="gpt-4">GPT-4 (Most capable)</option>
+    </select>
+    <div class="model-info">
+      GPT-3.5 is fastest but GPT-4 may provide better descriptions
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label for="github-token">GitHub Token (optional)</label>
+    <input type="password" id="github-token" placeholder="ghp_...">
+  </div>
+  
+  <button id="save">Save Settings</button>
+  <div id="status" class="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
