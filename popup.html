@@ -1,78 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PR Description Generator Settings</title>
   <style>
-    body {
-      width: 350px;
-      padding: 16px;
-      font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  :root {
+    --primary-color: #2da44e;
+    --primary-hover: #2c974b;
+    --background-color: #ffffff;
+    --text-color: #24292f;
+    --border-color: #d0d7de;
+    --inactive-bg: #f6f8fa;
+    --success-bg: #dafbe1;
+    --success-color: #1a7f37;
+    --error-bg: #ffebe9;
+    --error-color: #cf222e;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #0d1117;
+      --text-color: #c9d1d9;
+      --border-color: #30363d;
+      --inactive-bg: #161b22;
     }
-    
-    .input-group {
-      margin-bottom: 16px;
-    }
-    
-    .input-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    
-    input, select {
-      width: 100%;
-      padding: 5px 8px;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    
-    .provider-section {
-      margin-bottom: 16px;
-      padding: 12px;
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-    }
-    
-    .provider-section.inactive {
-      opacity: 0.5;
-    }
-    
-    .provider-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    
-    button {
-      width: 100%;
-      padding: 5px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #ffffff;
-      background-color: #2da44e;
-      border: 1px solid rgba(27, 31, 35, 0.15);
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    
-    button:hover {
-      background-color: #2c974b;
-    }
-    
-    .status {
-      margin-top: 8px;
-      font-size: 14px;
-      text-align: center;
-    }
+  }
+
+  body {
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0 auto;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 18px;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-group {
+    margin-bottom: 16px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  input[type="password"], select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+  
+  input[type="password"]:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(45, 164, 78, 0.1);
+  }
+  
+  .provider-section {
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .provider-section:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(45, 164, 78, 0.1);
+  }
+  
+  .provider-section.inactive {
+    opacity: 0.6;
+    background-color: var(--inactive-bg);
+  }
+  
+  .provider-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .provider-header input[type="radio"] {
+    margin: 0;
+  }
+  
+  .provider-header label {
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  .status {
+    margin-top: 12px;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .status.visible {
+    opacity: 1;
+  }
+  
+  .status.success {
+    background-color: var(--success-bg);
+    color: var(--success-color);
+  }
+  
+  .status.error {
+    background-color: var(--error-bg);
+    color: var(--error-color);
+  }
   </style>
 </head>
 <body>
+  <h1>PRompt Settings</h1>
   <div class="provider-section" id="openai-section">
     <div class="provider-header">
       <input type="radio" name="provider" value="openai" id="openai-radio" checked>
-      <label for="openai-radio">OpenAI</label>
+      <label for="openai-radio">OpenAI (ChatGPT)</label>
     </div>
     
     <div class="input-group">
@@ -86,7 +179,7 @@
     </div>
   </div>
 
-  <div class="provider-section" id="claude-section">
+  <div class="provider-section inactive" id="claude-section">
     <div class="provider-header">
       <input type="radio" name="provider" value="anthropic" id="claude-radio">
       <label for="claude-radio">Anthropic (Claude)</label>
