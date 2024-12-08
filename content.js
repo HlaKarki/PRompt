@@ -165,7 +165,7 @@ function getPathInfo() {
 
 // Template handling
 async function getDefaultTemplate() {
-    return fetch(chrome.runtime.getURL('default_template.md'))
+    return fetch(chrome.runtime.getURL('/assets/default_template.md'))
         .then(response => response.text())
         .catch(error => {
             console.error('Error loading default template:', error);
