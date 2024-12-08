@@ -8,8 +8,13 @@
     "storage"
   ],
   "host_permissions": [
-    "https://api.github.com/*"
+    "https://api.github.com/*",
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": ["*://github.com/*"],
@@ -23,8 +28,5 @@
   "web_accessible_resources": [{
     "resources": ["default_template.md"],
     "matches": ["*://github.com/*"]
-  }],
-  "icons": {
-    "128": "icon128.png"
-  }
+  }]
 }
