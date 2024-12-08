@@ -1,8 +1,6 @@
 # PRompt - AI-Powered PR Description Generator
 
-<p align="center">
-  🤖 A Chrome extension that automatically generates comprehensive pull request descriptions using AI
-</p>
+🤖 A Chrome extension that automatically generates comprehensive pull request descriptions using AI
 
 ## Features
 
@@ -65,15 +63,15 @@ For detailed information, see our [Privacy Policy](PRIVACY.md).
 ### Project Structure
 ```
 PRompt/
-├── manifest.json # Extension configuration
-├── popup.html # Settings popup interface
-├── popup.js # Settings management
-├── popup.css # Popup styles
-├── content.js # Main extension logic
-├── background.js # Background service worker
-├── styles.css # Content styles
-└── assets/
-      └── default_template.md # Default PR template
+   ├── manifest.json # Extension configuration
+   ├── popup.html # Settings popup interface
+   ├── popup.js # Settings management
+   ├── popup.css # Popup styles
+   ├── content.js # Main extension logic
+   ├── background.js # Background service worker
+   ├── styles.css # Content styles
+   └── assets/
+         └── default_template.md # Default PR template
 ```
 
 ### Local Development
