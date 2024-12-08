@@ -1,0 +1,225 @@
+:root {
+    --primary-color: #2da44e;
+    --primary-hover: #2c974b;
+    --primary-focus: rgba(45, 164, 78, 0.15);
+    --background-color: #ffffff;
+    --surface-color: #f6f8fa;
+    --text-color: #24292f;
+    --text-muted: #57606a;
+    --border-color: #d0d7de;
+    --success-bg: #dafbe1;
+    --success-color: #1a7f37;
+    --error-bg: #ffebe9;
+    --error-color: #cf222e;
+    --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #0d1117;
+        --surface-color: #161b22;
+        --text-color: #c9d1d9;
+        --text-muted: #8b949e;
+        --border-color: #30363d;
+        --success-bg: rgba(46, 160, 67, 0.15);
+        --error-bg: rgba(248, 81, 73, 0.15);
+    }
+}
+
+body {
+    max-width: 500px;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color var(--transition);
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 24px;
+    padding-bottom: 16px;
+    font-size: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1::before {
+    content: "🤖";
+    font-size: 24px;
+}
+
+.provider-section {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: all var(--transition);
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+}
+
+.provider-section:hover,
+.provider-section:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-focus);
+}
+
+.provider-section.active {
+    border-color: var(--primary-color);
+    background-color: var(--surface-color);
+}
+
+.provider-section:not(.active) {
+    opacity: 0.8;
+}
+
+.provider-section input:not([type="radio"]):disabled,
+.provider-section select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: var(--surface-color);
+}
+
+/* Add focus styles for keyboard navigation */
+.provider-section:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+
+.provider-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.radio-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.radio-wrapper input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.radio-wrapper input[type="radio"]:checked {
+    accent-color: var(--primary-color);
+}
+
+.radio-wrapper label {
+    cursor: pointer;
+}
+
+.badge {
+    padding: 2px 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--background-color);
+    border-radius: 12px;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+input[type="password"],
+select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: all var(--transition);
+    box-sizing: border-box;
+}
+
+input[type="password"]:hover:not([disabled]),
+select:hover:not([disabled]),
+input[type="password"]:focus:not([disabled]),
+select:focus:not([disabled]) {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+input[type="password"]:focus:not([disabled]),
+select:focus:not([disabled]) {
+    box-shadow: 0 0 0 3px var(--primary-focus);
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    padding-right: 32px;
+}
+
+.model-info {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+button {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+.status {
+    margin-top: 16px;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all var(--transition);
+}
+
+.status.visible {
+    opacity: 1;
+}
+
+.status.success {
+    background-color: var(--success-bg);
+    color: var(--success-color);
+}
+
+.status.error {
+    background-color: var(--error-bg);
+    color: var(--error-color);
+}
