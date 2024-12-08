@@ -1,60 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PR Description Generator Settings</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>PRompt Settings</h1>
-  
-  <div class="provider-section" id="openai-section" data-provider="openai">
+  <div class="popup-header">
+    <h1>PRompt</h1>
+    <button id="save">Save Settings</button>
+  </div>
+
+  <div class="provider-section active" id="openai-section" data-provider="openai" tabindex="0">
     <div class="provider-header">
       <div class="radio-wrapper">
-        <input type="radio" name="provider" value="openai" id="openai-radio" checked>
-        <label for="openai-radio">ChatGPT</label>
+        <input type="radio" id="openai" name="provider" value="openai" checked>
+        <label for="openai">ChatGPT</label>
       </div>
       <span class="badge">OpenAI</span>
     </div>
     
     <div class="input-group">
       <label for="openai-key">API Key</label>
-      <input type="password" id="openai-key" placeholder="sk-..." autocomplete="off" spellcheck="false">
+      <input type="password" id="openai-key" spellcheck="false" autocomplete="off" placeholder="sk-...">
     </div>
-    
+
     <div class="input-group">
       <label for="openai-model">Model</label>
-      <select id="openai-model"></select>
-      <div class="model-info">GPT-3.5 is fastest but GPT-4 may provide better descriptions</div>
+      <select id="openai-model">
+        <!-- Populated by JavaScript -->
+      </select>
+      <div class="model-info">
+        GPT-3.5 is fastest but GPT-4 may provide better descriptions
+      </div>
     </div>
   </div>
 
-  <div class="provider-section" id="claude-section" data-provider="anthropic">
+  <div class="provider-section" id="claude-section" data-provider="anthropic" tabindex="0">
     <div class="provider-header">
       <div class="radio-wrapper">
-        <input type="radio" name="provider" value="anthropic" id="claude-radio">
-        <label for="claude-radio">Claude</label>
+        <input type="radio" id="anthropic" name="provider" value="anthropic">
+        <label for="anthropic">Claude</label>
       </div>
       <span class="badge">Anthropic</span>
     </div>
     
     <div class="input-group">
       <label for="anthropic-key">API Key</label>
-      <input type="password" id="anthropic-key" placeholder="sk-ant-...">
+      <input type="password" id="anthropic-key" spellcheck="false" autocomplete="off" placeholder="sk-ant-...">
     </div>
-    
+
     <div class="input-group">
       <label for="anthropic-model">Model</label>
-      <select id="anthropic-model"></select>
-      <div class="model-info">Claude Haiku 3.5 is fastest but Claude Sonnet may provide better descriptions</div>
+      <select id="anthropic-model">
+        <!-- Populated by JavaScript -->
+      </select>
+      <div class="model-info">
+        Claude Haiku is fastest but Sonnet may provide better descriptions
+      </div>
     </div>
   </div>
 
-  <button id="save">Save Settings</button>
   <div id="status" class="status"></div>
 
   <script src="popup.js"></script>
 </body>
 </html>
-
