@@ -4,7 +4,6 @@
   "version": "1.0",
   "description": "Generate PR descriptions automatically",
   "permissions": [
-    "runtime",
     "activeTab",
     "storage"
   ],
