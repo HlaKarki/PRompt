@@ -4,16 +4,16 @@ console.log("PR Description Generator Extension loaded!");
 // Constants
 const AI_MODELS = {
     openai: {
-        "gpt-4": "GPT-4 (Most capable)",
-        "gpt-4-turbo-preview": "GPT-4 Turbo (Faster)",
-        "gpt-3.5-turbo": "GPT-3.5 (Fastest)",
+      "gpt-4": "GPT-4 (Most capable & Most Expensive)",
+      "gpt-4-turbo-preview": "GPT-4 Turbo (Faster)",
+      "gpt-3.5-turbo": "GPT-3.5 (Fastest & Cheapest)",
     },
     anthropic: {
-        "claude-3-opus-latest": "Claude-3 Opus (Oldest)",
-        "claude-3-5-sonnet-latest": "Claude-3.5 Sonnet (Balanced)",
-        "claude-3-5-haiku-latest": "Claude-3.5 Haiku (Fastest)",
-    }
-};
+      "claude-3-opus-latest": "Claude-3 Opus (Most powerful & Most Expensive)",
+      "claude-3-5-sonnet-latest": "Claude-3.5 Sonnet (Most intelligent)",
+      "claude-3-5-haiku-latest": "Claude-3.5 Haiku (Fastest & Cheapest)",
+    },
+  };
 // Invalid Claude model. Available models: claude-3-opus-latest, claude-3-5-sonnet-latest, claude-3-5-haiku-latest
 
 const MAX_RETRIES = 3;
